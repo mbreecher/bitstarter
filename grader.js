@@ -47,16 +47,22 @@ var checkHtmlFile = function(htmlfile, checksfile){
     
     for(var ii in checks){
 	var present = $(checks[ii]).length >0;
-	out[checks[ii[[ = present;
+	out[checks[ii]] = present;
 	}
 	return out;
 };
 
 //function to handle URL
 var checkUrlFile = function(urlfile){
-    rest.get(urlfile).on('complete', function(result);
+    rest.get(urlfile).on('complete', function(result){
+	if (result instanceof error){
+	    sys.puts('Error: ' + result.message);
+	    this.retry(5000);
+	}else
+	    sys.puts(result);
+    });
 }
-		   
+
 
 var clone = function(fn){
     return fn.bind({});
